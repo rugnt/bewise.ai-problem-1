@@ -1,0 +1,20 @@
+from envparse import Env
+
+env = Env()
+
+MAX_COUNT_QUESTIONS_IN_TABLE = 10_000
+SIZE_OF_RETURNING_QUESTIONS = 1
+
+USERNAME_POSTGRESQL = env.str("POSTGRES_USER", default="postgres")
+PASSWORD_POSTGRESQL = env.str("POSTGRES_PASSWORD", default="postgres")
+DATABASE_POSTGRESQL = env.str("POSTGRES_DB", default="testcase1")
+PORT_POSTGRESQL = env.str("PORT_POSTGRESQL", default=5432)
+DATABASE_HOST = env.str("DATABASE_HOST", default="0.0.0.0")
+
+DATABASE_URL = f"postgresql+asyncpg://{USERNAME_POSTGRESQL}:{PASSWORD_POSTGRESQL}" \
+                       f"@{DATABASE_HOST}:{PORT_POSTGRESQL}/{DATABASE_POSTGRESQL}"
+
+ALEMBIC_DATABASE_URL = f"postgresql://{USERNAME_POSTGRESQL}:{PASSWORD_POSTGRESQL}" \
+                               f"@{DATABASE_HOST}:{PORT_POSTGRESQL}/{DATABASE_POSTGRESQL}"
+
+APP_PORT = env.int("APP_PORT", default=8000)
