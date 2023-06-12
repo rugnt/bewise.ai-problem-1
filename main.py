@@ -7,7 +7,7 @@ from typing import Any
 app = FastAPI()
 
 
-@app.post("/api/v1")
+@app.get("/api/v1/questions")
 async def save_and_return_last_questions(question_num: int) -> dict[str, list[dict[str, Any]]]:
     """Сохраняет в бд вопросы викторины по api
     https://jservice.io/api/random?count=1, и возвращает последние сохраненные"""
