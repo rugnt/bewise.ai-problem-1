@@ -1,4 +1,5 @@
 import uvicorn
+import settings
 
 from fastapi import FastAPI
 from services import get_questions_for_api_and_save
@@ -16,4 +17,4 @@ async def save_and_return_last_questions(question_num: int) -> dict[str, list[di
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=settings.APP_PORT)
